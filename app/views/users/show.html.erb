@@ -2,6 +2,22 @@
 
 <%= render @user %>
 
+<section class="container my-5">
+  <div class="row">
+    <div class="user-image">
+    <%=image_tag("https://robohash.org/#{@user.id}.png", class: 'user--imagr', alt: 'user picture')%>
+    </div> 
+      
+      <div class="col-10 p-2">
+        <div class="d-flex justify-content-between">
+          <h3><%= @user.name %></h3>
+         
+        </div>
+      </div>
+  </div>
+  
+</section>
+
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>
