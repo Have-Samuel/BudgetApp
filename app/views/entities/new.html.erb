@@ -1,9 +1,9 @@
 <div>
-<%= form_with model: @entity, method: 'post', 
+<%= form_with model: @entities, method: 'post', 
     class: 'form',
     url: entity_create_path(category_id: @category.id) do |form| %>
       <%= render partial: 'groups/back_form',
-      locals: {title: "Add Transaction", form: form, button: "Create", back: entity_index_path(category_id: @category.id)}%>
+      locals: {title: "Add Transaction", form: form, button: "Create", back: entities_index_path(category_id: @category.id)}%>
       <div>
         <%= form.text_field :name, autofocus: true, placeholder: "Name" %>
         <%= form.number_field :amount, autofocus: true, placeholder: "Amount" %>

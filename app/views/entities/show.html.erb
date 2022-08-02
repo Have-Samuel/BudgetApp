@@ -1,4 +1,4 @@
-<%= render partial: 'groups/back_menu', locals: { title: "Details", back: entity_index_path(category_id: @category.id)}%>
+<%= render partial: 'groups/back_menu', locals: { title: "Details", back: entities_index_path(category_id: @category.id)}%>
 <div>
   <div>
     <p>Transaction #</p>
@@ -8,5 +8,5 @@
     <p><%=@transaction.name%></p>
     <p><%= number_to_currency @transaction.amount</p>
   </div>
-  <p><%= time_tag(@transaction.created_at, "date-local": "time", "date-format": "%B %d, %Y %l:%M:%S %P"%></p>
+  <p><%= time_tag(@transaction.created_at, "date-local": "time", "date-format": "%B %d, %Y %l:%M:%S %P")%></p>
 </div>
