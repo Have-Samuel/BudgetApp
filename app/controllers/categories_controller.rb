@@ -28,4 +28,3 @@ class CategoriesController < ActionController
   end
 
 end
-

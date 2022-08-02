@@ -3,16 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :image
  
-  validates :name, presence: true
-  has_many :groups, dependent: :destroy
-  has_many :entities, dependent: :destroy
-
-  def admin?(_admin)
-    :role == 'admin'
-  end
-
-  def authenticate(password)
-    valid_password?(password)
-  end
+  validates :name, presence: { message: "Name can't be blank" }
 end

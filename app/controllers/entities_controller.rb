@@ -4,68 +4,40 @@ class EntitiesController < ApplicationController
 
   # GET /entities or /entities.json
   def index
-    @entities = Entity.all
+    @category = Category.find(params[:category_id])
+    @entities = Entity.where(category_id: params[:category_id], user: current_user).order('created_at desc')
   end
 
   # GET /entities/1 or /entities/1.json
   def show
+    @transaction = entity.find.(params[:entity_id])
+    @category = Category.find(params[:category_id])
   end
 
   # GET /entities/new
   def new
+    @category = Category.find(params[:category_id])
     @entity = Entity.new
-  end
-
-  # GET /entities/1/edit
-  def edit
   end
 
   # POST /entities or /entities.json
   def create
-    @entity = Entity.new(entity_params)
-
-    respond_to do |format|
-      if @entity.save
-        format.html { redirect_to entity_url(@entity), notice: "Entity was successfully created." }
-        format.json { render :show, status: :created, location: @entity }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @entity.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /entities/1 or /entities/1.json
-  def update
-    respond_to do |format|
-      if @entity.update(entity_params)
-        format.html { redirect_to entity_url(@entity), notice: "Entity was successfully updated." }
-        format.json { render :show, status: :ok, location: @entity }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @entity.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /entities/1 or /entities/1.json
-  def destroy
-    @entity.destroy
-
-    respond_to do |format|
-      format.html { redirect_to entities_url, notice: "Entity was successfully destroyed." }
-      format.json { head :no_content }
+    transaction = Entity.new(entity_params)
+    transaction.category_id = params[:category_id]
+    transaction.user = current_user
+    if transaction.valid?
+      transaction.save
+      redirect_to entity_index_path(category_id: params[:categoryid]), notice: 'Transaction added'
+    else
+      redirect_to entity_new_path(category_id: params[:category_id]),
+                  alert: transaction.errors.first.message, status: 400
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_entity
-      @entity = Entity.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def entity_params
-      params.require(:entity).permit(:user_id, :name, :amount)
+      params.require(:entity).permit(:name, :amount)
     end
 end
