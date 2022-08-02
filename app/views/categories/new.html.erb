@@ -1,0 +1,30 @@
+<div>
+<%=form_with model: @category, mehtod:'post', class: 'form',url: categories_create_path do |form| %>
+  <%= render partial:'shred/back_form',
+      locals: {title: "Add Category", form: form, button: "Create", back: categories_index_path}%>
+  <div>
+    <div>
+      <img src=<%=image_path("save-money.png")%>/>
+      <label for="category_image">
+        Upload picture
+      </label>
+      <%= form.file_field :image, accept: "image/png,image/jpeg", class:"inputfile" %>
+    </div>
+    <%= form.text_field :name, autofocus: true, placeholder: "Name" %>
+  </div>
+  <%end%>
+</div>
+<script>
+  document.getElementById('category_immage').addEventListener('change', (e) => {
+    if(e.target.files.length == 1){
+      const file = e.target.files[0];
+      document.getElementById('label-for-image').textContent = filename;
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = readerEvent => {
+        document.getElementById('image-file').src = reader.result;
+      }
+    }
+    console.log(e.target.files)
+  });
+</script>
