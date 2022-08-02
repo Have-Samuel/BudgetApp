@@ -1,14 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Entities</h1>
-
-<div id="entities">
-  <% @entities.each do |entity| %>
-    <%= render entity %>
-    <p>
-      <%= link_to "Show this entity", entity %>
-    </p>
-  <% end %>
+<%= render partial: "groups/back_menu", locals: {title: "Transactions", back: categories_index_path}%>
+<div>
+  <% if @category.image.attached?%>
+    <img src=<%=url_for(@category.image)%> />
+    <%else%>
+      <img src=<%=image_path("save-money.png")%> />
+    <%end%>
+    <div>
+      <p><%=@category.name%></p>
+      <p><%=number_to_currency @category.entities.where(user: current_user).sum(:amount)%></p>
+    </div>
 </div>
-
-<%= link_to "New entity", new_entity_path %>
+<div>
+  <%@entities.each do |entity|%>
+    <div>
+      <a href=<%=entity_detail_path(entity_id: entity.id, category_id: @category.id)%> class="text">
+        <p><%=entity.name%></p>
+        </a>
+        <p><%=number_to_currency entity.amount%></p>
+    </div>
+    <p><%= time_tag(entity.created_at, "data-local": "time-ago")%></p>
+</div>
+<%end%>
+</div>
+<%= button_to "Add Transaction", entity_new_path(category_id: @category.id), method: :get%>

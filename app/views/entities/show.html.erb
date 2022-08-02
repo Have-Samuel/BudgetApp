@@ -1,11 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @entity %>
-
+<%= render partial: 'groups/back_menu', locals: { title: "Details", back: entity_index_path(category_id: @category.id)}%>
 <div>
-  <%= link_to "Edit this entity", edit_entity_path(@entity) %> |
-  <%= link_to "Back to entities", entities_path %>
-
-  <%= button_to "Destroy this entity", @entity, method: :delete %>
+  <div>
+    <p>Transaction #</p>
+    <p><%=@transaction.id%></p>
+  </div>
+  <div>
+    <p><%=@transaction.name%></p>
+    <p><%= number_to_currency @transaction.amount</p>
+  </div>
+  <p><%= time_tag(@transaction.created_at, "date-local": "time", "date-format": "%B %d, %Y %l:%M:%S %P"%></p>
 </div>
-

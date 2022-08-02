@@ -1,0 +1,28 @@
+<%# Main menu container %>
+<div>
+  <%# Lateral bar %>
+  <div>
+    <!-- Header -->
+    <div>
+      <div>
+        <% if current_user.image.attached?%>
+          <img src=<%=url_for(current_user.image)%> />
+          <%else%>
+          <img src=<%=image_path("user.png")%> />
+          <%end%>
+      </div>
+        <p><%=current_user.name%></p>
+        <p><%=current_user.email%></p>
+    </div>
+    <!-- Menu options -->
+    <div>
+      <img src=<%=image_path("hogar.png")%> alt="">
+      <%= link_to "Home", '/categories/index' %>
+    </div>
+    <div>
+      <img src=<%=image_path("logout.png")%> alt=""%>
+      <%=link_to "Log out", destroy_user_session_path, method: :get %>
+    </div>
+  </div>
+  <%= javascript_include_tag "menu_code" %>
+</div>
