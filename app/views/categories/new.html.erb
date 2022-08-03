@@ -1,6 +1,6 @@
 <div>
 <%=form_with model: @category, mehtod:'post', class: 'form',url: categories_create_path do |form| %>
-  <%= render partial:'shred/back_form',
+  <%= render partial:'shared/back_form',
       locals: {title: "Add Category", form: form, button: "Create", back: categories_index_path}%>
   <div>
     <div>
@@ -15,7 +15,7 @@
   <%end%>
 </div>
 <script>
-  document.getElementById('category_immage').addEventListener('change', (e) => {
+  document.getElementById('category_image').addEventListener('change', (e) => {
     if(e.target.files.length == 1){
       const file = e.target.files[0];
       document.getElementById('label-for-image').textContent = filename;

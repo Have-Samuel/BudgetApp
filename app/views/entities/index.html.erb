@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render partial: "groups/back_menu", locals: {title: "Transactions", back: categories_index_path}%>
+<%= render partial: "shared/back_menu", locals: {title: "Transactions", back: categories_index_path}%>
 <div>
   <% if @category.image.attached?%>
     <img src=<%=url_for(@category.image)%> />
