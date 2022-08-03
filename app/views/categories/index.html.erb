@@ -1,33 +1,33 @@
-<div>
-  <button type="button">
-    <svg xmlns="http://www.w3.org/2000/svg">
+<div class="flex main-bg-color color-gray justify-center align-center justify-between padding-tb-20">
+  <button type="button" class="hamburger-button" id="hamburger-button">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 20 20" stroke="currentColor" stroke="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   </button>
   <h2>Categories</h2>
-  <div>
-    <svg xmlns="http://www.w3.org/2000/svg">
+  <div class="actions color-white">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-10" fill="none" stroke="currentColor" stroke-width="2">
       <path stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
     </svg>
   </div>
 </div>
 
 <%= render 'shared/menu'%>
-<div>
+<div class="container flex column">
   <%=@categories.each do |category|%>
-    <a href=<%=entities_index_path(category_id: category.id)%> >
-      <div>
+    <a href=<%=entities_index_path(category_id: category.id)%>  class="text">
+      <div class="flex rounded margin-10 justify-between padding-18 color-bg-white" data-id=<%="category-#{category.id}"%>>
         <% if category.image.attached?%>
-          <%= image_tag(category.image.representation)%>
+         <img src=<%= image_tag(category.image)%> class="rounded img-w60">
           <%else%>
-          <img src=<%=image_path("save-money.png")%> />
+          <img src=<%=image_path("save-money.png")%> class="rounded img-w60 flex-1"/>
           <%end%>
-          <div>
-            <p><%=category.name%></p>
-            <p><%=number_to_currency category.entities.where(user: current_user).sum(:amount)%></p>
+          <div class="flex align-center flex-3 justify-between padding-20">
+            <p class="font-large bold text-color text"><%=category.name%></p>
+            <p class="bold text-color text"><%=number_to_currency category.entities.where(user: current_user).sum(:amount)%></p>
           </div>
       </div>
       </a>
       <%end%> 
 </div>
-<%=button_to "Add Category", categories_new_path, method: :get%>
+<%=button_to "Add Category", categories_new_path, method: :get, class: "btn color-white rounded second-bg-color padding-10 width-300px block margin-inline-auto height-70" %>
