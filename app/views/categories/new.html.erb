@@ -1,11 +1,11 @@
-<div>
+<div class="container">
 <%=form_with model: @category, mehtod:'post', class: 'form',url: categories_create_path do |form| %>
   <%= render partial:'shared/back_form',
       locals: {title: "Add Category", form: form, button: "Create", back: categories_index_path}%>
-  <div>
-    <div>
-      <img src=<%=image_path("save-money.png")%>>
-      <label for="category_image">
+  <div class="field">
+    <div class="flex row align-center margin-10">
+      <img src=<%=image_path("save-money.png")%> id="image-file" class="img-w60">
+      <label for="category_image" id="label-for-image" class="text-color font-large margin-left-10 underlined">
         Upload picture
       </label>
       <%= form.file_field :image, class:"inputfile" %>

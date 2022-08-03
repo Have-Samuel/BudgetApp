@@ -1,27 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render partial: "shared/back_menu", locals: {title: "Transactions", back: categories_index_path}%>
-<div>
+<div class="flex justify-between padding-20 color-bg-white marging-bottom-10>
   <% if @category.image.attached?%>
-    <img src=<%=url_for(@category.image)%> />
+    <img src=<%=url_for(@category.image)%> class="rounded img-w60"/>
     <%else%>
-      <img src=<%=image_path("save-money.png")%> />
+      <img src=<%=image_path("save-money.png")%> class="rounded img-w60 flex-1"/>
     <%end%>
-    <div>
-      <p><%=@category.name%></p>
-      <p><%=number_to_currency @category.entities.where(user: current_user).sum(:amount)%></p>
+    <div class="flex align-center flex-3 justify-between padding-20>
+      <p class="font-large text-color text"><%=@category.name%></p>
+      <p class="bold text-color text"><%=number_to_currency @category.entities.where(user: current_user).sum(:amount)%></p>
     </div>
 </div>
-<div>
+<div class="container flex column">
   <%@entities.each do |entity|%>
-    <div>
+    <div class="flex column rounded margin-10 justify-between padding-20 color-bg-white">
       <a href=<%=entity_detail_path(entity_id: entity.id, category_id: @category.id)%> class="text">
-        <p><%=entity.name%></p>
+        <p class="text text-color bold"><%=entity.name%></p>
         </a>
-        <p><%=number_to_currency entity.amount%></p>
+        <p class="text"><%=number_to_currency entity.amount%></p>
     </div>
-    <p><%= time_tag(entity.created_at, "data-local": "time-ago")%></p>
+    <p class="font-small italic"><%= time_tag(entity.created_at, "data-local": "time-ago")%></p>
 </div>
 <%end%>
 </div>
-<%= button_to "Add Transaction", entities_new_path(category_id: @category.id), method: :get%>
+<%= button_to "Add Transaction", entities_new_path(category_id: @category.id), method: :get,
+      class: 'btn color-white rounded second-bg-color padding-10 width-300px block margin-inline-auto height-70px'%>
