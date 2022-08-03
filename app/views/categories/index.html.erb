@@ -12,15 +12,15 @@
   </div>
 </div>
 
-<%= render 'shared/_menu.html.erb'%>
+<%= render 'shared/menu'%>
 <div>
   <%=@categories.each do |category|%>
-    <a href=<%=entity_index_path(category_id: category.id)%> >
+    <a href=<%=entities_index_path(category_id: category.id)%> >
       <div>
         <% if category.image.attached?%>
-          <%= image_tag(category.image)%>
+          <%= image_tag(category.image.representation)%>
           <%else%>
-          <img src='image_path("save-money.png")'/>
+          <img src=<%=image_path("save-money.png")%> />
           <%end%>
           <div>
             <p><%=category.name%></p>

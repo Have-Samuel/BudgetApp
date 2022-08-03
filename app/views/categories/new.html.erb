@@ -4,11 +4,11 @@
       locals: {title: "Add Category", form: form, button: "Create", back: categories_index_path}%>
   <div>
     <div>
-      <img src=<%=image_path("save-money.png")%>/>
+      <img src=<%=image_path("save-money.png")%>>
       <label for="category_image">
         Upload picture
       </label>
-      <%= form.file_field :image, accept: "image/png,image/jpeg", class:"inputfile" %>
+      <%= form.file_field :image, class:"inputfile" %>
     </div>
     <%= form.text_field :name, autofocus: true, placeholder: "Name" %>
   </div>

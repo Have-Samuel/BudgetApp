@@ -5,10 +5,11 @@
     <!-- Header -->
     <div>
       <div>
-        <% if current_user.image.attached %>
-          <img src=<%=url_for(current_user.image)%> />
+        <% if current_user.image.attached? %>
+          <%=image_tag(current_user.image)%>
           <%else%>
-          <img src=<%=image_path("user.png")%> />
+          <%= image_tag("user.png", :alt => "DELETE", :class => "icon") %> 
+    
           <%end%>
       </div>
         <p><%=current_user.name%></p>
@@ -24,5 +25,4 @@
       <%=link_to "Log out", destroy_user_session_path, method: :get %>
     </div>
   </div>
-  <%= javascript_include_tag "menu_code" %>
 </div>
