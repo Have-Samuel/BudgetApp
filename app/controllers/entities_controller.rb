@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 class EntitiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_entity, only: %i[ show edit update destroy ]
+  before_action :set_entity, only: %i[show edit update destroy]
 
   # GET /entities or /entities.json
   def index
@@ -10,8 +8,7 @@ class EntitiesController < ApplicationController
   end
 
   # GET /entities/1 or /entities/1.json
-  def show;
-  end
+  def show; end
 
   # GET /entities/new
   def new
@@ -25,9 +22,10 @@ class EntitiesController < ApplicationController
     @entity.category_id = Category.find(params[:category_id]).id
 
     respond_to do |format|
-     if @entity.save
+      if @entity.save
         format.html do
-          redirect_to user_category_path(current_user, params[:category_id]), notice: 'Entity was successfully created.'
+          redirect_to user_category_path(current_user, params[:category_id]),
+                      notice: 'Entity was successfully created.'
         end
         format.json { render :show, status: :created, location: @entity }
       else

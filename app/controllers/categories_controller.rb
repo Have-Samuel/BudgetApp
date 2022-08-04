@@ -1,18 +1,16 @@
-# frozen_string_literal: true
-
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :set_category, only: %i[show edit update destroy]
 
   def index
     @categories = Category.all
   end
-  
+
   def show
     @category = Category.find(params[:id])
     @entities = Entity.where(category_id: @category.id)
   end
-  
+
   def new
     @category = Category.new
   end
@@ -44,7 +42,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category =Category.find(params[:id])
+    @category = Category.find(params[:id])
     Entity.where(category_id: @category.id).destroy_all
     @category.destroy
     if @category.destroy
@@ -59,7 +57,7 @@ class CategoriesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_category
-    @Category = Category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def category_params
