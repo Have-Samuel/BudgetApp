@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get '/splash', to: 'splashes#index'
   devise_for :users
