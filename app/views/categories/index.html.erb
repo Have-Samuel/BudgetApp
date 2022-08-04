@@ -1,20 +1,20 @@
 <div class="flex main-bg-color color-gray justify-center align-center justify-between padding-tb-20">
-  <button type="button" class="hamburger-button" id="hamburger-button">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 20 20" stroke="currentColor" stroke="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-  </button>
+  # <button type="button" class="hamburger-button" id="hamburger-button">
+    # <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 20 20" stroke="currentColor" stroke="2">
+    #   <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    # </svg>
+  # </button>
   <h2>Categories</h2>
   <div class="actions color-white">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-10" fill="none" stroke="currentColor" stroke-width="2">
-      <path stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-    </svg>
+    # <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-10" fill="none" stroke="currentColor" stroke-width="2">
+    #   <path stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+    # </svg>
   </div>
 </div>
 
 <%= render 'shared/menu'%>
 <div class="container flex column">
-  <%=@categories.each do |category|%>
+  <%@categories.each do |category|%>
     <a href=<%=entities_index_path(category_id: category.id)%>  class="text">
       <div class="flex rounded margin-10 justify-between padding-18 color-bg-white" data-id=<%="category-#{category.id}"%>>
         <% if category.image.attached?%>

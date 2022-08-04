@@ -1,7 +1,7 @@
 <div class="container">
-<%= form_with model: @entities, method: 'post', 
+<%= form_with model: @entity, method: 'post', 
     class: 'form',
-    url: entity_create_path(category_id: @category.id) do |form| %>
+     url: entity_create_path do |form| %>
       <%= render partial: 'shared/back_form',
       locals: {title: "Add Transaction", form: form, button: "Create", back: entities_index_path(category_id: @category.id)}%>
       <div class="field">

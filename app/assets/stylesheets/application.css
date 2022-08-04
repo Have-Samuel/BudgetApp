@@ -15,5 +15,123 @@
  */
 
  .icon {
-  width: 50px;
+  width: 100px;
  }
+
+ @font-face {
+  src: url("fonts/nova-light.otf");
+  font-family: 'navolight';
+ }
+
+ @font-face {
+  font-family: 'novabold';
+  src: url("fonts/nova-bold(1).otf");
+ }
+
+ @font-face {
+  font-family: 'Pacifico';
+  src: url("fonts/Pacifico-Regular.ttf");
+ }
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #3778c2;
+  --second-color: #5fb523;
+  --text-color: #434b54;
+  --main-bg-color: #3778c2;
+  --second-bg-color: #5fb523;
+  --text-bg-color: #434b54
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+label,
+li {
+  margin: 0;
+  padding: 0;
+  font-family: 'novalight', Arial, Arial, Helvetica, sans-serif;
+  color: inherit;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.field input, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 10px;
+  width: 100%;
+  outline: none;
+}
+
+.field {
+  width: 100%;
+  margin: 20px;
+}
+
+.field a {
+  text-decoration: none;
+  width: fit-content;
+  margin-inline: auto;
+  display: block;
+}
+
+.field img {
+  width: 90px;
+  height: auto;
+}
+
+.actions input {
+  background-color: inherit;
+  border: none;
+  color: aliceblue;
+  margin-inline: 3px;
+  font-size: 1rem;
+}
+
+.actions input[type="submit"] {
+  cursor: pointer;
+}
+
+.select-image {
+  background-color: inherit;
+  border: none;
+}
+
+.back {
+  text-decoration: none;
+  color: azure;
+  width: 24px;
+}
+
+.inputfill {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -2;
+}
+
+.hamburger-button {
+  background-color: inherit;
+  color: inherit;
+  width: 30px;
+  border: none;
+  margin-inline: 5px;
+}

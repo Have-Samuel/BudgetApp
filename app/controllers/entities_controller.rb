@@ -27,9 +27,9 @@ class EntitiesController < ApplicationController
     transaction.user = current_user
     if transaction.valid?
       transaction.save
-      redirect_to entity_index_path(category_id: params[:categoryid]), notice: 'Transaction added'
+      redirect_to entity_index_path(category_id: params[:category_id]), notice: 'Transaction added'
     else
-      redirect_to entity_new_path(category_id: params[:category_id]),
+      redirect_to entities_new_path(category_id: params[:category_id]),
                   alert: transaction.errors.first.message, status: 400
     end
   end
