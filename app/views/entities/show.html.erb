@@ -1,12 +1,10 @@
-<%= render partial: 'shared/back_menu', locals: { title: "Details", back: entities_index_path(category_id: @category.id)}%>
-<div class="flex column justify-between color-bg-white padding-20">
-  <div class="flex margin-bottom-10">
-    <p class="bold">Transaction #</p>
-    <p class="bold"><%=@transaction.id%></p>
-  </div>
-  <div class="flex justify-between margin-bottom-10">
-    <p class="text text-color font-large bold"><%=@transaction.name%></p>
-    <p class="text"><%= number_to_currency @transaction.amount</p>
-  </div>
-  <p><%= time_tag(@transaction.created_at, "date-local": "time", "date-format": "%B %d, %Y %l:%M:%S %P")%></p>
+<p style="color: green"><%= notice %></p>
+
+<%= render @entity %>
+
+<div>
+  <%= link_to "Edit this entity", edit_user_category_entity_path(@entity) %> |
+  <%= link_to "Back to entities", user_category_entities_path %>
+
+  <%= button_to "Destroy this entity", user_category_entity_path(@entity), method: :delete %>
 </div>

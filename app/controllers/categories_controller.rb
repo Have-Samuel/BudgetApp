@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only: %i[ show edit update destroy ]
+  before_action :set_category, only: %i[ show edit update destroy ]
 
   def index
     @categories = Category.all
@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   
   def show
     @categories = Category.find(params[:id])
-    @entities = Entity.where(group_id: @category.id)
+    @entities = Entity.where(category_id: @category.id)
   end
   
   def new
@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
 
     respond_to do|format|
       if @category.save
-        format.html { redirect_to user_group_url(current_user, @category), notice: 'Group was successfully created.' }
+        format.html { redirect_to user_category_url(current_user, @category), notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -32,8 +32,8 @@ class CategoriesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @category.update(group_params)
-        format.html { redirect_to group_url(@category), notice: 'Group was successfully updated.' }
+      if @category.update(category_params)
+        format.html { redirect_to category_url(@category), notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -43,11 +43,11 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    Entity.where(group_id: @category.id).destroy_all
-    @group.destroy
+    Entity.where(category_id: @category.id).destroy_all
+    @category.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_groups_url, notice: 'Group was successfully destroyed.' }
+      format.html { redirect_to user_categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -55,7 +55,7 @@ class CategoriesController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_group
+  def set_category
     @Category = Category.find(params[:id])
   end
 
