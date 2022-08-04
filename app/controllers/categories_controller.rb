@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
   end
   
   def show
-    @categories = Category.find(params[:id])
+    @category = Category.find(params[:id])
     @entities = Entity.where(category_id: @category.id)
   end
   
@@ -17,19 +17,18 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
-  def create
-    category = Category.new(category_params)
-    @category.user_id = current_user.id
+  # GET /categories/1/edit
+  def edit; end
 
-    respond_to do|format|
-      if @category.save
-        format.html { redirect_to user_category_url(current_user, @category), notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+  def create
+    @category = current_user.categories.new(category_params)
+    @category.user = User.find(params[:user_id])
+    if @category.save
+      flash[:notice] = 'Category saved successfullt'
+    else
+      flash[:alert] = 'Category not saved'
     end
+    redirect_to user_categories_path
   end
 
   def update
@@ -45,13 +44,15 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    @category =Category.find(params[:id])
     Entity.where(category_id: @category.id).destroy_all
     @category.destroy
-
-    respond_to do |format|
-      format.html { redirect_to user_categories_url, notice: 'Category was successfully destroyed.' }
-      format.json { head :no_content }
+    if @category.destroy
+      flash[:notice] = 'Category removed successfully'
+    else
+      flash[:alert] = 'Category not removed'
     end
+    redirect_to user_categories_path
   end
 
   private

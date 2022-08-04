@@ -51,15 +51,10 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    signed_out?(Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    redirect_to root_path
     end
   end
-
-  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
@@ -70,4 +65,3 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
-end

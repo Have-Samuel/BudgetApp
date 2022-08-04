@@ -22,7 +22,7 @@
         <a class="back" href="/users/<%=params[:user_id]%>/categories"><i class="fa fa-angle-left"></i></a>
         <span class="navbar-text">TRANSACTIONS</span>
       <% elsif request.path == "/splash" %>
-        <span style="text-align: center; flex: 1; color: #D2E1EBFF;">WELCOME</span>
+        <span class="welcome">WELCOME</span>
       <%else%>
         <a class="back" href="/users/sign_in"><i class="fa fa-angle-left"></i></a>
         <span class="navbar-text">CATEGORIES </span>
@@ -31,7 +31,9 @@
         <%=link_to "SIGN OUT", destroy_user_session_path, class: "lolo", method: :delete %>
       <%end%>
     </nav>
-    <main>
+    <main> 
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
   </body>

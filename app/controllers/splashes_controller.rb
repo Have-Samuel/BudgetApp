@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class SplashesController < ApplicationController
-  protect_from_forgery with: :null_session
-  skip_before_action :authenticate_user!
-
+  before_action :configure_permitted_parameters, if: :devise_controller?
   def index; end
 end
