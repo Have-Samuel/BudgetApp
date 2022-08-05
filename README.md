@@ -12,7 +12,7 @@ A mobile web application where you can manage your budget: you have a list of tr
 - Ruby on Rails
 
 ## Live Demo
-[Heroku]()
+[Heroku](https://afternoon-tor-26481.herokuapp.com/splash)
 
 ## Additional Tools
 
