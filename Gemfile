@@ -9,6 +9,8 @@ gem 'bullet'
 
 gem 'cancancan'
 
+gem 'font-awesome-sass'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 

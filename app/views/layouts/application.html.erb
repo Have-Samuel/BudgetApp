@@ -23,6 +23,8 @@
         <span class="navbar-text">TRANSACTIONS</span>
       <% elsif request.path == "/splash" %>
         <span class="welcome">WELCOME</span>
+      <% elsif request.path == "/users/#{params[:user_id]}/categories/#{params[:category_id]}/entities/new" %>
+        <span class="welcome">NEW TRANSACTION</span>
       <%else%>
         <a class="back" href="/users/sign_in"><i class="fa fa-angle-left"></i></a>
         <span class="navbar-text">CATEGORIES </span>

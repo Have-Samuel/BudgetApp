@@ -13,6 +13,7 @@ class EntitiesController < ApplicationController
   # GET /entities/new
   def new
     @entity = Entity.new
+    @categories = current_user.categories
   end
 
   # POST /entities or /entities.json

@@ -16,11 +16,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Proxima+Nova');
 
-/* * {
-  margin: 0;
-  padding: 0;
-  font-family: 'proxima-nova', sans-serif;
-} */
+@import "font-awesome";
 
 body {
   background-color: whitesmoke;
@@ -41,6 +37,15 @@ body {
   justify-content: space-between;
 }
 
+.nav-icon {
+  color: black;
+  font-size: 40px;
+  text-decoration: none;
+  position: absolute;
+  top: 20px;
+  margin-left: 1rem;
+}
+
 .nav a {
   color: azure;
 }
@@ -51,6 +56,15 @@ body {
   font-family: inherit;
   text-decoration: none;
   color: #0d0e0d85;
+}
+
+.category-select {
+  border: 1px solid rgb(24, 24, 26);
+  padding: 7px;
+  margin-left: 6rem;
+  border-radius: 5px;
+  margin-bottom: 0.4rem;
+  margin-top: 0.4rem;
 }
 
 .navbar-text {
@@ -93,6 +107,7 @@ i:hover {
   padding: 1.2rem;
   display: flex;
   border-radius: 7px;
+  margin-top: 13.3rem;
 }
 
 .add-new-category-div a {
@@ -197,6 +212,7 @@ img {
   justify-content: space-between;
   padding: 2rem;
   margin-top: 2rem;
+  border-radius: 1rem;
 }
 
 #transactions-container form button {
@@ -272,6 +288,9 @@ img {
   border: 1px solid #0a0707;
   border-radius: 5px;
   margin: 0.1rem;
+  width: 80%;
+  align-items: center;
+  margin-left: 8rem;
 }
 
 .add-category-btn,
@@ -281,8 +300,8 @@ img {
   border: none;
   background-color: #559092;
   color: #f0ffff;
-  width: 80%;
-  margin: auto;
+  width: 70%;
+  margin-left: 13rem;
   border-radius: 6px;
 }
 

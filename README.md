@@ -1,8 +1,5 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-#### Original design idea by **[Gregoire Vella on Behance](https://www.behance.net/gregoirevella)**, in association with the [Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/) of the design.
-<br />
-
 # UseItWisely
 
 A mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
@@ -142,6 +139,10 @@ Give a ⭐️ if you like this project!
 - Thanks to the Microverse team for the great curriculum.
 - Thanks to Code Reviewers for the insightful feedback.
 - A great thanks to My coding partners, morning session team, and standup team Partners for their contributions.
+
+#### Original design idea by **[Gregoire Vella on Behance](https://www.behance.net/gregoirevella)**, in association with the [Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/) of the design.
+<br />
+
 
 ## 📝 License
 

@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit update destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.where(user_id: current_user.id)
   end
 
   def show
@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.new(category_params)
     @category.user = User.find(params[:user_id])
     if @category.save
-      flash[:notice] = 'Category saved successfullt'
+      flash[:notice] = 'Category saved successfully'
     else
       flash[:alert] = 'Category not saved'
     end

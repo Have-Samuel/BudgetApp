@@ -1,12 +1,17 @@
+<%= render partial: 'shared/header', locals: { caption: 'Categories' } %>
+<%= render 'shared/menu' %>
+
 <div id="categories">
-  <span class="total-amount-text">Total amount $<%= Entity.all.sum(:amount)%></span>
     <% if @categories.length == 0 %>
       <h2 class="no-items-yet-text">No categories yet😢</h2>
     <%end%>
   <% @categories.each do |category| %>
     <%= render category if category.user_id == current_user.id%>
+    <h2><%= category.name %></h2>
+    <span class="total-amount-text">Total amount $<%= category.total_entities %></span>
   <% end %>
 </div>
+
 
 <div class="add-new-category-div">
   <%= link_to "NEW CATEGORY", new_user_category_path(current_user.id) %>

@@ -10,10 +10,16 @@
       </ul>
     </div>
   <% end %>
+  
 
-  <%= form.text_field :name, placeholder: "Name", class: "add-entity-name" %>
+  <%= form.text_field :name, placeholder: "Name", class: "add-entity-name", required: true%>
 
-  <%= form.number_field :amount, placeholder: "Amount", class: "add-entity-amount" %>
+  <%= form.number_field :amount, placeholder: "Amount", class: "add-entity-amount", required: true%>
+
+    <div>
+        <%= form.label :category %>
+        <%= form.select :category, @categories.map { |c| [c.name, c.id] }, { :include_blank => "-- Select --" }, required: true, class: "category-select" %>
+      </div>
 
   <%= form.submit "Add transaction", class: "add-entity-btn" %>
 <% end %>

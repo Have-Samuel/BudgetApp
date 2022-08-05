@@ -5,6 +5,6 @@
     <%= category.name %>
   </p>
 
-  <p class="total-amount-text">$<%=Entity.where(category_id: category.id).sum(:amount)%></p>
+  <p class="total-amount-text">$<%= Entity.where(category_id: category.id).sum(:amount) %></p>
 
 </a>
