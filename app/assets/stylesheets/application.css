@@ -120,8 +120,7 @@ img {
   display: flex;
   justify-content: space-between;
   padding: 1.1rem 0.8rem;
-  box-shadow: rgba(0, 0, 0, 0.05) 0p 6px 24px 0,
-    rgba(0, 0, 0, 0.08) 0p 0p 0p 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
   border-radius: 6px;
 }
 
@@ -138,8 +137,8 @@ img {
   text-align: center;
   border-radius: 0.8rem;
   font-size: 19px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  font-weight: 500;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  font-weight: bold;
   align-self: flex-end;
 }
 
