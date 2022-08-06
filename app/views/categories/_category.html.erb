@@ -1,0 +1,10 @@
+<a href="/users/<%=current_user.id%>/categories/<%= category.id%>" id="<%= dom_id category %>" class="category-card">
+  <img src="https://source.unsplash.com/random/1920x1080/?<%=category.icon%>" />
+  
+  <p class="category-div-name">
+    <%= category.name %>
+  </p>
+
+  <p class="total-amount-text">$<%= category.total_entities %></p>
+
+</a>

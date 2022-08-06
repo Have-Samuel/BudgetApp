@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @category %>
+
+
+<div class="transactions-container-div">
+  <% @entities.each do |i| %>
+      <div class="transaction-div">
+        <div>
+          <span class="trans-name"><%= i.name %></span>
+          <span class="trans-date"><%= i.created_at.strftime('%d %b %Y at %H:%M:%S')%></span>
+        </div>
+        <span><b>$<%= i.amount %></b></span>
+      </div>
+  <% end %>
+</div>
+
+<div id="transactions-container">
+  <%= link_to "Edit this category", edit_user_category_path(@category), class: 'edit' %>
+  <%# <%= link_to "Back to categories", user_categories_path %>
+
+  <%= button_to "Destroy this category", user_category_path, method: :delete%>
+  <%= link_to "Add new transaction", new_user_category_entity_path(params[:user_id], params[:id]), class: 'add' %>
+</div>
